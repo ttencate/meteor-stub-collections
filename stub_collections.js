@@ -17,6 +17,7 @@ const StubCollections = (() => {
     [].concat(pendingCollections).forEach((collection) => {
       if (!privateApi.pairs[collection._name]) {
         const options = {
+          idGeneration: typeof(collection._makeNewID()) === 'object' ? 'MONGO' : 'STRING',
           transform: collection._transform,
         };
         const pair = {
